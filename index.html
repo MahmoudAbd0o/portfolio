@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahmoud Abdo Hassan — Data Science & AI</title>
+<meta name="description" content="Mahmoud Abdo Hassan — CS student focused on Data Science & AI. Python, Pandas, SQL, OpenCV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060A13; --bg2:#0A1120; --card:rgba(255,255,255,.045); --card2:rgba(255,255,255,.07);
+  --line:rgba(255,255,255,.11); --txt:#F2F6FC; --mut:#93A1B8;
+  --c1:#22D3EE; --c2:#A78BFA; --c3:#34D399;
+  --grad:linear-gradient(100deg,var(--c1),var(--c2));
+  --r:18px; --sans:'Space Grotesk','Inter',system-ui,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.65;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(600px 400px at 12% 8%,rgba(34,211,238,.14),transparent 60%),
+  radial-gradient(700px 450px at 88% 18%,rgba(167,139,250,.16),transparent 60%),
+  radial-gradient(600px 500px at 50% 100%,rgba(52,211,153,.09),transparent 60%),var(--bg);}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:99}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,10,19,.75);border-bottom:1px solid var(--line)}
+nav .wrap{height:66px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;font-weight:700}
+.logo-mark{width:36px;height:36px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#06121a;font-weight:700;font-size:14px}
+.links{display:flex;gap:24px;color:var(--mut);font-size:14.5px}
+.links a:hover{color:#fff}
+.links a.on{color:var(--c1)}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border-radius:12px;font-weight:600;font-size:14.5px;border:1px solid transparent;cursor:pointer;transition:.18s}
+.btn-p{background:var(--grad);color:#06121a}
+.btn-p:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn-g{border-color:var(--line);color:var(--txt);background:rgba(255,255,255,.03)}
+.btn-g:hover{border-color:var(--c1);color:var(--c1)}
+.btn-sm{padding:9px 16px;font-size:13.5px;border-radius:10px}
+.hero{padding:84px 0 30px}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--c1);border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.08);padding:7px 14px;border-radius:100px;margin-bottom:20px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--c3);box-shadow:0 0 12px var(--c3);animation:pl 2s infinite}
+@keyframes pl{50%{opacity:.4}}
+h1{font-size:52px;line-height:1.08;letter-spacing:-1px}
+h1 .gr{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.type{font-size:19px;color:var(--mut);margin-top:12px;min-height:30px}
+.type b{color:var(--txt)}
+.sub{color:var(--mut);margin-top:14px;max-width:52ch;font-size:16px}
+.cta{display:flex;gap:13px;margin-top:28px;flex-wrap:wrap}
+.chips{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.chip{font-size:13px;color:var(--mut);border:1px solid var(--line);background:var(--card);padding:8px 13px;border-radius:100px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(8px)}
+.term{overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.term-h{display:flex;align-items:center;gap:8px;padding:13px 17px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03);font-size:12.5px;color:var(--mut)}
+.d{width:10px;height:10px;border-radius:50%;background:#334155}
+.term-b{padding:22px 20px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.9;color:#CBD5E1}
+.k{color:var(--c1)} .s{color:#FDE68A} .cm{color:#64748B}
+.cursor{display:inline-block;width:8px;height:15px;background:var(--c1);vertical-align:-2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.float-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 20px 20px}
+.mini{padding:14px;border-radius:13px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.mini b{font-size:19px} .mini span{font-size:12px;color:var(--mut);display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px}
+.stat{padding:20px;text-align:center}
+.stat b{font-size:27px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12.5px;color:var(--mut);display:block;margin-top:4px}
+section{padding:70px 0}
+.sec-tag{font-size:13px;color:var(--c1);letter-spacing:2px;font-weight:600}
+h2{font-size:30px;margin:6px 0 8px;letter-spacing:-.5px}
+.sec-sub{color:var(--mut);margin-bottom:32px;max-width:64ch}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sk{padding:24px}
+.sk h3{font-size:15px;margin-bottom:4px}
+.sk p{font-size:13px;color:var(--mut);margin-bottom:16px}
+.bar{height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:6px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.bar-l{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tags span{font-size:12px;border:1px solid var(--line);padding:6px 11px;border-radius:8px;background:rgba(255,255,255,.03);color:#CBD5E1}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pcard{padding:28px;position:relative;overflow:hidden;transition:.2s}
+.pcard:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.4)}
+.pcard.feat{grid-column:1/-1;display:grid;grid-template-columns:110px 1fr;gap:24px;align-items:start}
+.picon{width:96px;height:96px;border-radius:20px;background:linear-gradient(140deg,rgba(34,211,238,.2),rgba(167,139,250,.2));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:42px}
+.badge{font-size:11.5px;color:var(--c3);border:1px solid rgba(52,211,153,.4);background:rgba(52,211,153,.08);padding:4px 12px;border-radius:100px}
+.pt{font-size:20px;font-weight:700;margin:10px 0 8px}
+.pd{color:#C4CFDE;font-size:14.5px;margin-bottom:14px}
+.plink{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.next{border-style:dashed;color:var(--mut)}
+.tl{position:relative;margin-left:8px;padding-left:30px;border-left:1px solid var(--line)}
+.tl-item{position:relative;padding-bottom:30px}
+.tl-item::before{content:"";position:absolute;left:-37px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 5px rgba(34,211,238,.12)}
+.tl-item h4{font-size:16.5px}
+.tl-item .when{font-size:12.5px;color:var(--c1);font-weight:600}
+.tl-item p{font-size:14px;color:var(--mut)}
+.contact{padding:34px;display:flex;justify-content:space-between;gap:26px;align-items:center;flex-wrap:wrap;background:linear-gradient(120deg,rgba(34,211,238,.1),rgba(167,139,250,.1)),var(--card)}
+.cbtns{display:flex;gap:11px;flex-wrap:wrap}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:26px}
+#top{position:fixed;bottom:24px;right:24px;width:50px;height:50px;border-radius:50%;background:var(--card2);border:1px solid var(--line);color:#fff;font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transition:.25s;backdrop-filter:blur(8px)}
+#top.show{opacity:1;pointer-events:auto}
+.rv{opacity:1}
+html.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+html.js .rv.in{opacity:1;transform:none}
+.marq{display:flex;gap:10px;overflow:hidden;margin-top:26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq div{display:flex;gap:10px;animation:mq 22s linear infinite;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+#burger{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;font-size:17px;cursor:pointer}
+@media(max-width:900px){
+  .hero-grid,.proj{grid-template-columns:1fr}
+  h1{font-size:35px}
+  .grid3{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pcard.feat{grid-template-columns:1fr}
+  .links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:#0A1120;padding:18px 26px;border-bottom:1px solid var(--line);gap:16px}
+  .links.open{display:flex}
+  #burger{display:block}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav><div class="wrap">
+  <a class="logo" href="#top0"><span class="logo-mark">MA</span> Mahmoud Abdo</a>
+  <div class="links" id="links">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#courses">Courses</a>
+    <a href="#journey">Journey</a><a href="#contact">Contact</a>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a class="btn btn-p btn-sm" href="Mahmoud_Abdo_Hassan_CV.pdf" download>⬇ CV</a>
+    <button id="burger">☰</button>
+  </div>
+</div></nav>
+
+<header class="hero wrap" id="top0"><div class="hero-grid">
+  <div>
+    <span class="pill"><span class="dot"></span> 3rd Year CS · Zagazig National University · Cairo, Egypt</span>
+    <h1>Mahmoud Abdo<br><span class="gr">Hassan</span></h1>
+    <div class="type">I'm a <b id="ty">Data Science student</b><span class="cursor"></span></div>
+    <p class="sub">CS student focused on <b style="color:#fff">Data Science &amp; AI</b>. I clean, analyze and visualize data with Python · Pandas · SQL — and I built a real computer-vision system (DrowsyGuard-AI) with OpenCV. Open to Data Science internships.</p>
+    <div class="cta">
+      <a href="#projects" class="btn btn-p">🚗 View my project</a>
+      <a href="Mahmoud_Abdo_Hassan_CV.pdf" download class="btn btn-g">⬇ Download CV</a>
+    </div>
+    <div class="chips"><span class="chip">📧 jackmoex@gmail.com</span><span class="chip">📞 +201008799415</span><span class="chip">📍 Cairo, Egypt</span></div>
+  </div>
+  <div class="card term">
+    <div class="term-h"><span class="d"></span><span class="d"></span><span class="d"></span><span style="margin-left:6px">mahmoud.py — whoami</span></div>
+    <div class="term-b"><span class="cm"># mahmoud.py</span><br>
+      me = {<br>&nbsp;&nbsp;<span class="k">"name"</span>: <span class="s">"Mahmoud Abdo Hassan"</span>,<br>
+      &nbsp;&nbsp;<span class="k">"uni"</span>: <span class="s">"ZNU · 3rd Year CS"</span>,<br>
+      &nbsp;&nbsp;<span class="k">"focus"</span>: [<span class="s">"Data Science"</span>, <span class="s">"AI"</span>],<br>
+      &nbsp;&nbsp;<span class="k">"stack"</span>: [<span class="s">"Python"</span>, <span class="s">"Pandas"</span>, <span class="s">"SQL"</span>, <span class="s">"Java"</span>, <span class="s">"Node.js"</span>, <span class="s">"OpenCV"</span>],<br>
+      &nbsp;&nbsp;<span class="k">"hiring"</span>: <span class="s">"intern? let's talk ↓"</span><br>}<span class="cursor"></span></div>
+    <div class="float-row">
+      <div class="mini"><b>10+</b><span>technologies &amp; tools</span></div>
+      <div class="mini"><b style="color:var(--c1)">DEPI</b><span>Data Science track</span></div>
+    </div>
+  </div>
+</div>
+<div class="stats rv">
+  <div class="card stat"><b>3rd</b><span>year — CS @ ZNU</span></div>
+  <div class="card stat"><b><span data-n="4">4</span></b><span>courses taken</span></div>
+  <div class="card stat"><b><span data-n="3">3</span></b><span>certificates earned</span></div>
+  <div class="card stat"><b><span data-n="1">1</span></b><span>active project</span></div>
+</div>
+<div class="marq"><div><span class="chip">🐍 Python</span><span class="chip">☕ Java</span><span class="chip">🟩 Node.js</span><span class="chip">🐼 Pandas</span><span class="chip">🔢 NumPy</span><span class="chip">🧩 OOP</span><span class="chip">🗄️ SQL</span><span class="chip">📊 Matplotlib</span><span class="chip">🌊 Seaborn</span><span class="chip">📈 Plotly</span><span class="chip">👁️ OpenCV</span><span class="chip">🕷️ Web Scraping</span><span class="chip">🤖 ML basics</span><span class="chip">💻 Git &amp; GitHub</span><span class="chip">🐍 Python</span><span class="chip">☕ Java</span><span class="chip">🟩 Node.js</span><span class="chip">🐼 Pandas</span><span class="chip">🔢 NumPy</span><span class="chip">🧩 OOP</span><span class="chip">🗄️ SQL</span><span class="chip">📊 Matplotlib</span><span class="chip">🌊 Seaborn</span><span class="chip">📈 Plotly</span><span class="chip">👁️ OpenCV</span><span class="chip">🕷️ Web Scraping</span><span class="chip">🤖 ML basics</span><span class="chip">💻 Git &amp; GitHub</span></div></div>
+</header>
+
+<section id="about"><div class="wrap rv">
+  <div class="sec-tag">01 · ABOUT</div><h2>Data guy, not just code guy 📊</h2>
+  <p class="sec-sub">I like turning messy data into something useful — cleaning it, exploring it, visualizing it, then telling the story. My base is Python + SQL, backed by Java and OOP — plus Node.js from Mahara-Tech — and my playground right now is computer vision with OpenCV through the DEPI Data Science track.</p>
+  <div class="grid3">
+    <div class="card sk"><h3>🎓 Education</h3><p>B.Sc. Computer Science — Third Year (in progress), Zagazig National University. Focus: Data Science &amp; AI.</p></div>
+    <div class="card sk"><h3>🎯 Now</h3><p>DEPI Data Science track · building DrowsyGuard-AI drowsiness detection with the team.</p></div>
+    <div class="card sk"><h3>💼 Looking for</h3><p>Data Science internship — data cleaning, analysis, visualization, ML basics.</p></div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap rv">
+  <div class="sec-tag">02 · SKILLS</div><h2>What I work with 🛠️</h2>
+  <p class="sec-sub">Honest levels — student, learning fast.</p>
+  <div class="grid3">
+    <div class="card sk"><h3>🐍 Python for Data</h3><p>Cleaning · analysis · OOP</p>
+      <div class="bar-l"><span>Python</span><span>85%</span></div><div class="bar"><i data-w="85" style="width:85%"></i></div>
+      <div class="bar-l"><span>Pandas / NumPy</span><span>80%</span></div><div class="bar"><i data-w="80" style="width:80%"></i></div>
+      <div class="tags"><span>Python</span><span>Pandas</span><span>NumPy</span><span>Java</span><span>OOP</span></div></div>
+    <div class="card sk"><h3>📈 Visualization &amp; ML</h3><p>Charts that explain</p>
+      <div class="bar-l"><span>Matplotlib / Seaborn / Plotly</span><span>78%</span></div><div class="bar"><i data-w="78" style="width:78%"></i></div>
+      <div class="bar-l"><span>Machine Learning basics</span><span>65%</span></div><div class="bar"><i data-w="65" style="width:65%"></i></div>
+      <div class="tags"><span>Matplotlib</span><span>Seaborn</span><span>Plotly</span><span>ML</span><span>SQL</span><span>Node.js</span></div></div>
+    <div class="card sk"><h3>👁️ CV · SQL · Web</h3><p>Real-world data capture</p>
+      <div class="bar-l"><span>OpenCV / PERCLOS / Pose</span><span>72%</span></div><div class="bar"><i data-w="72" style="width:72%"></i></div>
+      <div class="bar-l"><span>SQL / Databases</span><span>75%</span></div><div class="bar"><i data-w="75"></i></div>
+      <div class="tags"><span>OpenCV</span><span>SQL</span><span>Web Scraping</span><span>Git &amp; GitHub</span></div></div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap rv">
+  <div class="sec-tag">03 · PROJECTS</div><h2>Featured work 🚗</h2>
+  <p class="sec-sub">One strong real project beats five tutorial copies.</p>
+  <div class="proj">
+    <div class="card pcard feat">
+      <div class="picon">🚗</div>
+      <div><span class="badge">● Live team project — DEPI</span>
+        <div class="pt">DrowsyGuard-AI — Driver Drowsiness Detection</div>
+        <p class="pd">Computer-vision system that watches a driver and flags fatigue: eye landmarks → PERCLOS eye-closure metric + head-down pose detection, frame by frame in Python + OpenCV — with an Arduino bridge to trigger a physical alert.</p>
+        <div class="tags"><span>Python</span><span>OpenCV</span><span>PERCLOS</span><span>Facial landmarks</span><span>Head-pose</span><span>Arduino</span></div>
+        <div class="plink">
+          <a class="btn btn-p btn-sm" href="https://github.com/MahmoudAbd0o/DrowsyGuard-AI-DEPI" target="_blank" rel="noopener">★ View on GitHub</a>
+          <a class="btn btn-g btn-sm" href="https://github.com/MahmoudAbd0o" target="_blank" rel="noopener">More repos →</a>
+        </div></div>
+    </div>
+    <div class="card pcard"><div class="pt">📊 Data analysis in action</div><p class="pd">Cleaning + exploring real datasets with Pandas &amp; NumPy: handling nulls, duplicates, grouping, aggregation — then turning numbers into answers.</p><div class="tags"><span>Pandas</span><span>NumPy</span><span>Data Cleaning</span><span>EDA</span></div></div>
+    <div class="card pcard"><div class="pt">📈 Visualization &amp; collection</div><p class="pd">Charts with Matplotlib / Seaborn / Plotly that explain the data, SQL for querying, and web scraping to collect my own datasets.</p><div class="tags"><span>Matplotlib</span><span>Seaborn</span><span>Plotly</span><span>SQL</span><span>Scraping</span></div></div></div>
+</div></section>
+
+<section id="courses"><div class="wrap rv">
+  <div class="sec-tag">04 · COURSES &amp; CERTIFICATES</div><h2>Training 📖</h2>
+  <p class="sec-sub">Same idea as Mohamed's portfolio — courses with status + progress.</p>
+  <div class="grid3">
+    <div class="card sk"><h3>🐍 Python — Satr Platform</h3><p>Completed ✅ — earned the certificate. Foundations + problem solving.</p><div class="tags"><span>Completed</span><span>Certificate</span></div></div>
+    <div class="card sk"><h3>☕ Java — Satr Platform</h3><p>Completed ✅ — earned the certificate. OOP + core Java.</p><div class="tags"><span>Completed</span><span>Certificate</span></div></div>
+    <div class="card sk"><h3>🟩 Node.js — Mahara-Tech</h3><p>Completed ✅ — earned the certificate. Backend basics with Node.js.</p><div class="tags"><span>Completed</span><span>Certificate</span></div></div>
+  </div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="card sk"><h3>🚀 Data Science — DEPI</h3><p>Currently enrolled 📌 — Digital Egypt Pioneers track. Building DrowsyGuard-AI as the track project.</p><div class="tags"><span>In progress</span><span>DEPI</span></div></div>
+    <div class="card sk"><h3>🎓 CS Coursework — ZNU</h3><p>Databases &amp; SQL basics · OOP · data handling with Pandas/NumPy — academic + self practice.</p><div class="tags"><span>University</span><span>SQL</span><span>OOP</span></div></div>
+    <div class="card sk"><h3>🏅 Certificates</h3><p>Python (Satr) · Java (Satr) · Node.js (Mahara-Tech) — 3 earned, DEPI in progress.</p><div class="tags"><span>3 earned</span><span>1 in progress</span></div></div>
+  </div>
+  <div class="card sk" style="margin-top:16px"><div class="bar-l"><span>3 of 4 courses completed</span><span>75%</span></div><div class="bar"><i data-w="75" style="width:75%"></i></div>
+  <p style="font-size:13px;color:var(--mut)">Satr Python ✅ · Satr Java ✅ · Mahara-Tech Node.js ✅ · DEPI Data Science 📌 (in progress)</p></div>
+</div></section>
+
+<section id="journey"><div class="wrap rv">
+  <div class="sec-tag">05 · JOURNEY</div><h2>How I got here 🧭</h2>
+  <p class="sec-sub">No fake dates — just the real path.</p>
+  <div class="tl">
+    <div class="tl-item"><div class="when">Computer Science · ZNU</div><h4>B.Sc. CS — Third Year (in progress)</h4><p>Zagazig National University, Egypt. Focus: Data Science &amp; Artificial Intelligence.</p></div>
+    <div class="tl-item"><div class="when">Completed · Satr Platform</div><h4>Python Certificate 🐍</h4><p>Finished the Python course and earned the certificate.</p></div>
+    <div class="tl-item"><div class="when">Completed · Satr Platform</div><h4>Java Certificate ☕</h4><p>Finished the Java course (OOP + core Java) and earned the certificate.</p></div>
+    <div class="tl-item"><div class="when">Completed · Mahara-Tech</div><h4>Node.js Certificate 🟩</h4><p>Finished the Node.js course (backend basics) and earned the certificate.</p></div>
+    <div class="tl-item"><div class="when">Present · DEPI</div><h4>Data Science Track — Digital Egypt Pioneers</h4><p>Enrolled in the Data Science track; building DrowsyGuard-AI as the track project.</p></div>
+    <div class="tl-item"><div class="when">Present · Team project</div><h4>DrowsyGuard-AI-DEPI 🚗</h4><p>PERCLOS eye-closure + head-down detection in Python + OpenCV. <a href="https://github.com/MahmoudAbd0o/DrowsyGuard-AI-DEPI" target="_blank" rel="noopener" style="color:var(--c1)">github.com/MahmoudAbd0o/DrowsyGuard-AI-DEPI</a></p></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap rv">
+  <div class="sec-tag">06 · CONTACT</div><h2>Let's work together 🤝</h2>
+  <p class="sec-sub">Open to internships and small data projects.</p>
+  <div class="card contact">
+    <div><h2 style="font-size:24px">Hire a fast learner 🚀</h2><p class="sec-sub" style="margin:8px 0 0">Reply within a day — Cairo, Egypt · English: Very Good · Arabic: Native.</p></div>
+    <div class="cbtns">
+      <a class="btn btn-p" href="mailto:jackmoex@gmail.com">✉️ jackmoex@gmail.com</a>
+      <button class="btn btn-g" id="copy">📋 Copy email</button>
+      <a class="btn btn-g" href="tel:+201008799415">📞 01008799415</a>
+      <a class="btn btn-g" href="https://www.linkedin.com/in/mahmoud-awadallah-60b211415/" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a class="btn btn-g" href="https://github.com/MahmoudAbd0o" target="_blank" rel="noopener">💻 GitHub</a>
+    </div>
+  </div>
+</div></section>
+
+<footer>Mahmoud Abdo Hassan — Data Science &amp; AI · Built with one HTML file 💙 · <a href="Mahmoud_Abdo_Hassan_CV.pdf" download style="text-decoration:underline">Download CV</a></footer>
+<noscript><style>.rv{opacity:1!important;transform:none!important}.bar i{display:none}#mq{display:none}</style><p style="text-align:center;color:#93A1B8">Enable JavaScript for animations.</p></noscript>
+<button id="top">↑</button>
+
+<script>
+document.documentElement.classList.add('js');
+const roles=["Data Science student","AI enthusiast","Python developer","OpenCV builder","future Data Scientist"];
+let ri=0,ci=0,del=false;const el=document.getElementById('ty');
+(function tick(){const w=roles[ri];el.textContent=w.slice(0,ci);
+if(!del&&ci<w.length){ci++;setTimeout(tick,70)}else if(!del){del=true;setTimeout(tick,1200)}
+else if(ci>0){ci--;setTimeout(tick,35)}else{del=false;ri=(ri+1)%roles.length;setTimeout(tick,300)}})();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+e.target.querySelectorAll('.bar i').forEach(b=>{if(!b.dataset.done){b.dataset.done='1';b.style.width='0%';requestAnimationFrame(()=>requestAnimationFrame(()=>{b.style.width=b.dataset.w+'%'}))}});
+e.target.querySelectorAll('[data-n]').forEach(n=>{const t=+n.dataset.n;let s=0;const iv=setInterval(()=>{s++;n.textContent=s;if(s>=t)clearInterval(iv)},120)});
+io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(x=>io.observe(x));
+const bar=document.getElementById('bar'),topBtn=document.getElementById('top');
+addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight);
+bar.style.width=(p*100)+'%';topBtn.classList.toggle('show',h.scrollTop>500)},{passive:true});
+topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+document.getElementById('copy').onclick=function(){navigator.clipboard.writeText('jackmoex@gmail.com');this.textContent='✅ Copied!';setTimeout(()=>this.textContent='📋 Copy email',1500)};
+const bg=document.getElementById('burger'),lk=document.getElementById('links');
+bg.onclick=()=>lk.classList.toggle('open');lk.onclick=()=>lk.classList.remove('open');
+const secs=[...document.querySelectorAll('section[id],header[id]')];
+const la=[...document.querySelectorAll('#links a')];
+addEventListener('scroll',()=>{let cur='';secs.forEach(s=>{if(scrollY>=s.offsetTop-140)cur=s.id});
+la.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
+</script>
+</body>
+</html>
